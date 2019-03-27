@@ -1,0 +1,26 @@
+{
+  "name": "jsfest-demo",
+  "author": "I. Berezin, N. Kreshchenko",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sir-ingvarr/jsfest-demo.git"
+  },
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node -r ts-node/register src/index.ts",
+    "tslint": "tslint -p tsconfig.json 'src/**/*.ts' 'test/**/*.ts'",
+    "mocha": "mocha --require ts-node/register 'test/**/*.ts'",
+    "test": "npm run tslint && npm run typing && npm run mocha",
+    "typing": "tsc -p .",
+    "schema": "typescript-json-schema ./src/validations/tsconfig.json \"*\" -o \"./src/validations/validations.json\" --required=true --strictNullChecks=true --noExtraProps=true --noExtraItems=true",
+    "build": "npm run clean && tsc -p ./src --outDir dist --noEmit false",
+    "clean": "rm -rf ./dist",
+    "precommit": "npm run test"
+  },
+  "dependencies": {
+    "typescript": "^2.9.2"
+  },
+  "devDependencies": {
+    "typescript-json-schema": "^0.36.0"
+  }
+}

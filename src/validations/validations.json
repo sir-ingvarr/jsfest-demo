@@ -1,0 +1,84 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "RPCGetRequest": {
+            "additionalProperties": false,
+            "properties": {
+                "dateFrom": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "dateTo": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "extraParams": {
+                    "additionalItems": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "items": {
+                                    "type": "number"
+                                },
+                                "type": "array"
+                            }
+                        ]
+                    },
+                    "items": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "items": {
+                                "type": "number"
+                            },
+                            "type": "array"
+                        }
+                    ],
+                    "minItems": 4,
+                    "type": "array"
+                },
+                "frequency": {
+                    "enum": [
+                        60000
+                    ],
+                    "minimum": 2000,
+                    "type": "number"
+                },
+                "marketPeriod": {
+                    "enum": [
+                        "ALL",
+                        "FOREX_MARKET",
+                        "MARKET"
+                    ],
+                    "type": "string"
+                },
+                "ticker": {
+                    "minLength": 1,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "dateFrom",
+                "dateTo",
+                "ticker"
+            ],
+            "type": "object"
+        }
+    }
+}
+
